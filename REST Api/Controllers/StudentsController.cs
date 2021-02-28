@@ -11,9 +11,17 @@ namespace REST_Api.Controllers
     public class StudentsController : ControllerBase
     {
         [HttpGet]
-        public string Students()
+        public string Students(string orderBy="secondName")
         {
-            return "Alex, Jane, Justin";
+            return $"Alex, Jane, Justin sortBy={orderBy}";
         }
+
+        [HttpGet("{id}")]
+        public string Student(int id)
+        {
+            return "Alex";
+        }
+
+
     }
 }
