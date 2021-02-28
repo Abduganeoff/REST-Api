@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using REST_Api.Models;
 
 namespace REST_Api.Controllers
 {
@@ -11,16 +12,28 @@ namespace REST_Api.Controllers
     public class StudentsController : ControllerBase
     {
         [HttpGet]
-        public string Students(string orderBy="secondName")
+        public IActionResult Students(string orderBy="secondName")
         {
-            return $"Alex, Jane, Justin sortBy={orderBy}";
+            return Ok($"Alex, Jane, Justin sortBy={orderBy}");
         }
 
         [HttpGet("{id}")]
-        public string Student(int id)
+        public IActionResult Student(int id)
         {
-            return "Alex";
+            if (id == 1) return Ok("Alex");
+            else if (id == 2) return Ok("Jane");
+            else if (id == 3) return Ok("Justin");
+            else return NotFound("Student Not Found");
         }
+
+        [HttpPost]
+        public IActionResult CreateStudent(Student student)
+        {
+            student.IndexNumber = $"s{new Random().Next(1, 20000)}";
+            return Ok(student);
+        }
+
+
 
 
     }
