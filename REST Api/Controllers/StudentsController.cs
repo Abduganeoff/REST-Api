@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using REST_Api.Models;
+using REST_Api.Services;
 
 namespace REST_Api.Controllers
 {
@@ -11,10 +12,16 @@ namespace REST_Api.Controllers
     [ApiController]
     public class StudentsController : ControllerBase
     {
+        private IDbService _dbService;
+
+        public StudentsController(IDbService dbService)
+        {
+            _dbService = dbService;
+        }
         [HttpGet]
         public IActionResult Students(string orderBy="secondName")
         {
-            return Ok($"Alex, Jane, Justin sortBy={orderBy}");
+            return Ok(_dbService.GetStudents());
         }
 
         [HttpGet("{id}")]

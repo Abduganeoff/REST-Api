@@ -21,7 +21,7 @@ namespace REST_Api.Services
         }
         public IEnumerable<Student> GetStudents()
         {
-            return _students
+            return _students;
         }
     }
 }
