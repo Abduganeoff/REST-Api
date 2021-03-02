@@ -86,9 +86,14 @@ C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\bin\Debug\netcoreapp3.1
 C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\obj\Debug\netcoreapp3.1\REST Api.csproj.CoreCompileInputs.cache
-C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\obj\Debug\netcoreapp3.1\REST Api.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\obj\Debug\netcoreapp3.1\REST Api.csproj.CopyComplete
 C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\obj\Debug\netcoreapp3.1\REST Api.dll
 C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\obj\Debug\netcoreapp3.1\REST Api.pdb
 C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\obj\Debug\netcoreapp3.1\REST Api.genruntimeconfig.cache
+C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
+C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\obj\Debug\netcoreapp3.1\REST Api.csproj.CoreCompileInputs.cache
+C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\obj\Debug\netcoreapp3.1\REST Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Muhammad\Desktop\ASP.NET Core\REST Api\REST Api\obj\Debug\netcoreapp3.1\REST Api.MvcApplicationPartsAssemblyInfo.cache
