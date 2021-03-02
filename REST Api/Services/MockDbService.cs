@@ -1,9 +1,5 @@
 ﻿using REST_Api.Models;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace REST_Api.Services
 {
     public class MockDbService : IDbService
@@ -23,5 +19,16 @@ namespace REST_Api.Services
         {
             return _students;
         }
+
+        public Student GetStudent(string index)
+        {
+            if(index == "s1234")
+            {
+                return new Student{ IdNumber = 1, FirstName = "Rizo", SecondName = "Abduganeoff", IndexNumber = "s1234" };
+            }
+
+            return null;
+        }
+
     }
 }

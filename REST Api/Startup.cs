@@ -4,12 +4,14 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using REST_Api.Models;
 using REST_Api.Services;
 
 namespace REST_Api
@@ -39,7 +41,7 @@ namespace REST_Api
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbService dbService)
         {
             if (env.IsDevelopment())
             {
@@ -50,6 +52,28 @@ namespace REST_Api
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Student API V1");
+            });
+
+            // inline middleware
+            app.Use(async (context, next) =>
+            {
+                if(!context.Request.Headers.ContainsKey("Index"))
+                {
+                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                    await context.Response.WriteAsync("Not Authorized");
+                    return;
+                }
+
+                string index = context.Request.Headers["Index"].ToString();
+                Student student =  dbService.GetStudent(index);
+                if(student == null)
+                {
+                    context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                    await context.Response.WriteAsync("Index number required");
+                    return;
+                } 
+
+                await next();
             });
 
             app.UseRouting();
