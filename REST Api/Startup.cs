@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using REST_Api.Middleware;
 using REST_Api.Models;
 using REST_Api.Services;
 
@@ -54,27 +55,28 @@ namespace REST_Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Student API V1");
             });
 
+            app.UseMiddleware<CustomLoginMiddleware>();
             // inline middleware
-            app.Use(async (context, next) =>
+            app.UseWhen( context => context.Request.Path.ToString().Contains("secret"), app => app.Use (async (context, next) => 
             {
-                if(!context.Request.Headers.ContainsKey("Index"))
-                {
-                    context.Response.StatusCode = StatusCodes.Status401Unauthorized;
-                    await context.Response.WriteAsync("Not Authorized");
-                    return;
-                }
+                    if (!context.Request.Headers.ContainsKey("Index"))
+                    {
+                        context.Response.StatusCode = StatusCodes.Status401Unauthorized;
+                        await context.Response.WriteAsync("Not Authorized");
+                        return;
+                    }
 
-                string index = context.Request.Headers["Index"].ToString();
-                Student student =  dbService.GetStudent(index);
-                if(student == null)
-                {
-                    context.Response.StatusCode = StatusCodes.Status400BadRequest;
-                    await context.Response.WriteAsync("Index number required");
-                    return;
-                } 
+                    string index = context.Request.Headers["Index"].ToString();
+                    Student student = dbService.GetStudent(index);
+                    if (student == null)
+                    {
+                        context.Response.StatusCode = StatusCodes.Status400BadRequest;
+                        await context.Response.WriteAsync("Index number required");
+                        return;
+                    }
 
-                await next();
-            });
+                    await next();
+            }));
 
             app.UseRouting();
 
