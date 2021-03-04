@@ -55,6 +55,7 @@ namespace REST_Api
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Student API V1");
             });
 
+            app.UseMiddleware<CustomExceptionMiddleware>();
             app.UseMiddleware<CustomLoginMiddleware>();
             // inline middleware
             app.UseWhen( context => context.Request.Path.ToString().Contains("secret"), app => app.Use (async (context, next) => 

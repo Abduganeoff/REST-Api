@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using REST_Api.Exceptions;
 using REST_Api.Models;
 using REST_Api.Services;
 
@@ -21,6 +22,7 @@ namespace REST_Api.Controllers
         [HttpGet]
         public IActionResult Students(string orderBy="secondName")
         {
+            throw new StudentCouldNotDefendException("Student did not pass ASD exam");
             return Ok(_dbService.GetStudents());
         }
 
